@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+<meta name="viewport" content="width=device-width" />
+</head>
+<body class="bk">
+    
+        <b id="demo4" class="dt"></b><br>
+    <h1 id="demo5" class="tm"></h1>
+    
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Urbanist:wght@300&display=swap');
+</style>
+<style>
+    
+    .bk{
+        background-color: black;
+    }
+    .dt{
+        display: block;
+        top: 30vh;
+        text-align: center;
+        color: white;
+        position: relative;
+        font-family: 'Urbanist', sans-serif;
+        letter-spacing: 2px;
+    }
+    .tm{
+        text-align: center;
+        color: white;
+        position: relative;
+        top: 35vh;
+        font-weight: 700;
+        font-family: 'Urbanist', sans-serif;
+        font-size: 50px;
+        letter-spacing: 5px;
+    }
+</style>
+<script>
+
+function realtime2() {
+var now = new Date();
+var y = now.getFullYear();
+var m = now.getMonth() + 1;
+var d = now.getDate();
+var w = now.getDay();
+var wd = ['日', '月', '火', '水', '木', '金', '土'];
+target = document.getElementById('demo4');
+target.innerHTML = y + '/' + m + '/' + d ;
+}
+function realtime3() {
+var nowDate = new Date();
+var h1 = nowDate.getHours();
+var mi1 = nowDate.getMinutes();
+var s1 = nowDate.getSeconds();
+target = document.getElementById('demo5');
+target.innerHTML = h1 + ':' + mi1 + ':' + s1 ;
+}
+setInterval('realtime2()',1000);
+setInterval('realtime3()',1000);
+
+</script>
+</body>
