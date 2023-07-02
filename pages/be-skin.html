@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <html lang="ja">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta charset="UTF-8" />
+        <meta http-equiv="content-language" content="ja" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>c-tool 統合版スキン抽出ツール</title>
+        <meta name="description" content="ここでは、統合版のスキンをファイルに変換します。" />
+        <meta name="keywords" content="caymankun,skin,c-tool,c-test" />
+        <meta property="og:title" content="c-tool " />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://caymankun.github.io/c-test/be-skin" />
+        <meta property="og:description" content="統合版スキン抽出ツール" />
+        <meta property="og:site_name" content="統合版スキン抽出ツール" />
+        <meta name="robots" content="INDEX,FOLLOW" />
+        <meta name="robots" content="NOARCHIVE" />
+        <meta http-equiv="pragma" content="no-cache" />
+        <meta http-equiv="imagetoolbar" content="no" />
+        <meta name="google" content="notranslate" />
+        
+</head>
+<body>
+<div>
+<section>
+    <h1>
+        統合版スキン抽出ツール
+    </h1>
+    <b>create by caymankun</b>
+    <p>使い方は、まずgayser mcが搭載されてるサーバーに参加します。<br>
+    そしたら、このツールであなたのxboxid(ゲーマータグ)を<br>
+    このテキストボックスに入力すると、<br>
+    スキンの元ファイルが、取り出せます。</p>
+    <b>gayser mc搭載のサーバに参加しないと、取り出すことが出来ません。<br>
+    サーバーはなんでもいいです。
+    </b>
+</section>
+    <input placeholder="your xbox ID" id="xboxid"><br>
+    <img id="image"></img>
+
+    <button onclick="ee()">送信</button>
+</div>
+</body>
+<script>
+    function ee(){
+    
+    const xboxid = document.getElementById("xboxid").value;
+    fetch('https://api.geysermc.org/v2/xbox/xuid/' + xboxid)
+    .then(Response => {
+        return Response.json()
+    })
+    .then(data => {
+        const xuiddata = data.xuid
+    
+        const xuidk = xuiddata
+    fetch('https://api.geysermc.org/v2/skin/' + xuidk)
+    .then(Response1 => {
+        return Response1.json()
+    })
+    .then(data1 => {
+       const img = data1.texture_id
+
+       const Image = document.getElementById('image');
+     Image.src ='https://textures.minecraft.net/texture/' + img;
+  })
+
+    })
+    .catch(error => {
+        console.log(error)
+    })
+    };
+    </script>
+</html>
